@@ -91,6 +91,7 @@ GESTURE_SOONG_VARS := \
 $(foreach v,$(GESTURE_SOONG_VARS),$(eval $(call add-gesturevar-if-exist,$(v))))
 
 # Qualcomm variables
+ifneq ($(TARGET_USE_QTI_BT_STACK),false)
 SOONG_CONFIG_NAMESPACES += aosp_vs_qva
 SOONG_CONFIG_aosp_vs_qva += aosp_or_qva
 SOONG_CONFIG_aosp_vs_qva_aosp_or_qva := qva
@@ -106,3 +107,4 @@ else
     SOONG_CONFIG_bredr_vs_btadva_bredr_or_btadva := bredr
 endif #ifneq "$(wildcard vendor/qcom/proprietary/commonsys/bt/bt_adv_audio)" ""
 
+endif
